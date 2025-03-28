@@ -11,7 +11,6 @@ const TransactionId = require("./server/middlewares/TransactionId");
 const { destroyPool } = require("./server/services/MySQLService");
 
 const AuthRoute = require("./server/routes/AuthRoute");
-const JobRoute = require("./server/routes/JobRoute");
 
 const PORT = process.env.PORT || 8080;
 const API_PATH = process.env.API_PATH || "";
@@ -33,7 +32,6 @@ App.use(BodyParser.urlencoded({ limit: "50mb", extended: true }));
 App.use(BodyParser.json({ limit: "50mb" }));
 
 App.use(`${BASE_PATH}/auth`, AuthRoute);
-App.use(`${BASE_PATH}/jobs`, JobRoute);
 
 App.use((req, res) => {
   res.status(404).send({ error: "Not Found" });
